@@ -34,6 +34,11 @@ type Command = {
   characteristic: string, //@todo add types
 };
 
+type ToDoItemProps = {
+  codes: Array<unknown>,
+  state: unknown,
+};
+
 class RFRGBWPlatform implements DynamicPlatformPlugin {
   private readonly log: Logging;
   private readonly api: API;
@@ -258,12 +263,12 @@ class RFRGBWPlatform implements DynamicPlatformPlugin {
 
     const {codes, state} = getCode(todoItem);
 
-    codes.forEach((code: any, i) => {
+    codes.forEach((code: unknown, i: number) => {
       python.call(this.rfDevice, 'tx_code', code, todoItem.accessory.context.protocol,
         todoItem.accessory.context.pulselength, todoItem.accessory.context.codelength)
         .then((): void => {
           this.log.debug(todoItem.accessory.context.name + ' is turned ' + (todoItem.value ? 'on.' : 'off.'));
-          Object.assign(todoItem.accessory.context.state, state)
+          Object.assign(todoItem.accessory.context.state, state);
 
           if (i + 1 === codes.length) {
             if (this.commandQueue.length > 0) {
@@ -289,7 +294,7 @@ class RFRGBWPlatform implements DynamicPlatformPlugin {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const getCode = (todoItem: any): unknown => {
+const getCode = (todoItem: any): ToDoItemProps => {
   const codes = [];
   let state = {};
 
