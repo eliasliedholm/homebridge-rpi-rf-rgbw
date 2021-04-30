@@ -82,10 +82,6 @@ class RFRGBWPlatform implements DynamicPlatformPlugin {
     }
     python.callSync(this.rfDevice, 'enable_tx');
 
-
-
-    this.rfDevice = console.log
-
     api.on(APIEvent.DID_FINISH_LAUNCHING, this.didFinishLaunching.bind(this));
   }
 
@@ -140,7 +136,7 @@ class RFRGBWPlatform implements DynamicPlatformPlugin {
 
     accessory.context = {
       state: {},
-      ...data,
+      ...data
     };
     accessory.context.serial = serial;
 
