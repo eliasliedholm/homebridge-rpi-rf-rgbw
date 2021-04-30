@@ -1,0 +1,123 @@
+{
+    "pluginAlias": "rfRGBW",
+    "pluginType": "platform",
+    "singular": true,
+    "headerDisplay": "[rpi-rf](https://pypi.org/project/rpi-rf/) Plugin for [Homebridge](https://github.com/nfarina/homebridge).",
+    "footerDisplay": "Raise [Issues](https://github.com/eliasliedholm/homebridge-rpi-rf-rgbw/issues) or submit [Pull Requests](https://github.com/eliasliedholm/homebridge-rpi-rf-rgbw/pulls) on [Project Page](https://github.com/eliasliedholm/homebridge-rpi-rf-rgbw).",
+    "schema": {
+        "type": "object",
+        "properties": {
+            "name": {
+                "title": "Name",
+                "type": "string",
+                "required": true,
+                "default": "RF RGBW Light",
+                "description": "A unique name for the accessory. It will be used as the accessory name in HomeKit."
+            },
+            "gpio": {
+                "title": "GPIO Pin",
+                "type": "integer",
+                "placeholder": 17,
+                "description": "The BCM number of the pin your RF transmitter is connected to."
+            },
+            "repeat": {
+                "title": "Repeat Cycles",
+                "type": "integer",
+                "placeholder": 1,
+                "description": "RF code repeat cycles."
+            },
+            "devices": {
+                "title": "Devices",
+                "type": "array",
+                "required": true,
+                "minLength": 1,
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "title": "Name",
+                            "type": "string",
+                            "required": true,
+                            "placeholder": "RGBW Light",
+                            "description": "Name of your device."
+                        },
+                        "on_code": {
+                            "title": "On Code",
+                            "type": "integer",
+                            "required": true,
+                            "placeholder": 8241409,
+                            "description": "RF code to turn on your device."
+                        },
+                        "off_code": {
+                            "title": "Off Code",
+                            "type": "integer",
+                            "required": true,
+                            "placeholder": 8241410,
+                            "description": "RF code to turn off your device."
+                        },
+                        "color_codes": {
+                            "title": "Color codes",
+                            "type": "array",
+                            "required": true,
+                            "placeholder": [8241413, 8241417, 8241421, 8241425, 8241418, 8241414, 8241422, 8241426, 8241415, 8241419, 8241427, 8241423],
+                            "description": "RF codes for setting colors ordered by hue, beginning with red"
+                        },
+                        "temperature_color_codes": {
+                            "title": "Temperature codes",
+                            "type": "array",
+                            "required": true,
+                            "placeholder": [8241433, 8241434, 8241435, 8241436],
+                            "description": "RF codes for setting color temperature ordered by hue, beginning with red"
+                        },
+                        "brightness_up_code": {
+                            "title": "Brightness Up Code",
+                            "type": "integer",
+                            "required": true,
+                            "placeholder": 8241411,
+                            "description": "RF code to increase brightness"
+                        },
+                        "brightness_down_code": {
+                            "title": "Brightness Down Code",
+                            "type": "integer",
+                            "required": true,
+                            "placeholder": 8241412,
+                            "description": "RF code to decrease brightness."
+                        },
+                        "brigthness_steps": {
+                            "title": "Brightness steps",
+                            "type": "integer",
+                            "required": true,
+                            "placeholder": 7,
+                            "description": "Amount of times brightness code must be sent to go from lowest to highest setting."
+                        },
+                        "color_white_code": {
+                            "title": "Color White Code",
+                            "type": "integer",
+                            "required": true,
+                            "placeholder": 8241429,
+                            "description": "RF code to set color white."
+                        },
+                        "pulselength": {
+                            "title": "Pulse Length",
+                            "type": "integer",
+                            "placeholder": 350,
+                            "description": "RF code pulse length."
+                        },
+                        "protocol": {
+                            "title": "Protocol",
+                            "type": "integer",
+                            "placeholder": 1,
+                            "description": "RF code protocol."
+                        },
+                        "codelength": {
+                            "title": "Code Length",
+                            "type": "integer",
+                            "placeholder": 24,
+                            "description": "RF code length."
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
