@@ -31,7 +31,7 @@ type Command = {
   accessory: PlatformAccessory,
   value: CharacteristicValue,
   callback: CharacteristicSetCallback
-  characteristic: any, //@todo add types
+  characteristic: string, //@todo add types
 };
 
 class RFRGBWPlatform implements DynamicPlatformPlugin {
@@ -162,22 +162,22 @@ class RFRGBWPlatform implements DynamicPlatformPlugin {
       service
         .getCharacteristic(hap.Characteristic.On)
         .on('set', this.setPowerState.bind(this, accessory));
-      
+
       service
         .addCharacteristic(hap.Characteristic.Brightness)
         .on('set', this.setBrightnessState.bind(this, accessory));
 
       service
         .addCharacteristic(hap.Characteristic.Hue)
-        .on('set', this.setHueState.bind(this, accessory))
+        .on('set', this.setHueState.bind(this, accessory));
 
       service
         .addCharacteristic(hap.Characteristic.Saturation)
-        .on('set', this.setSaturationState.bind(this, accessory))
+        .on('set', this.setSaturationState.bind(this, accessory));
 
-        service
+      service
         .addCharacteristic(hap.Characteristic.ColorTemperature)
-        .on('set', this.setTemperatureState.bind(this, accessory))
+        .on('set', this.setTemperatureState.bind(this, accessory));
     }
 
     accessory.on(PlatformAccessoryEvent.IDENTIFY, () => {
@@ -256,7 +256,7 @@ class RFRGBWPlatform implements DynamicPlatformPlugin {
       return;
     }
 
-    const {codes, state} = getCode(todoItem, this.config);
+    const {codes, state} = getCode(todoItem);
 
     codes.forEach((code: any, i) => {
       python.call(this.rfDevice, 'tx_code', code, todoItem.accessory.context.protocol,
@@ -277,54 +277,52 @@ class RFRGBWPlatform implements DynamicPlatformPlugin {
         .catch((error: Error) => {
           // @todo update error message
           this.log('Failed to turn ' + (todoItem.value ? 'on ' : 'off ') + todoItem.accessory.context.name);
-          this.log
+          this.log;
         });
-    })
+    });
 
     if (codes.length === 0) {
-      this.transmitting = false
+      this.transmitting = false,
       todoItem.callback();
     }
   }
 }
 
-const getCode = (todoItem: any, config: any) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const getCode = (todoItem: any): unknown => {
   const codes = [];
-  let state = {}
+  let state = {};
 
   if (todoItem.characteristic === 'power') {
-    codes.push(todoItem.value ? todoItem.accessory.context.on_code : todoItem.accessory.context.off_code)
-    state = { power: todoItem.value }
-  }
-  else if (todoItem.characteristic === 'hue') {
-    const step = 360 / todoItem.accessory.context.color_codes.length
-    const index = Math.floor(todoItem.value / step)
-    codes.push(todoItem.accessory.context.color_codes[index])
-  }
-  else if (todoItem.characteristic === 'saturation') {
+    codes.push(todoItem.value ? todoItem.accessory.context.on_code : todoItem.accessory.context.off_code);
+    state = { power: todoItem.value };
+  } else if (todoItem.characteristic === 'hue') {
+    const step = 360 / todoItem.accessory.context.color_codes.length;
+    const index = Math.floor(todoItem.value / step);
+    codes.push(todoItem.accessory.context.color_codes[index]);
+  } else if (todoItem.characteristic === 'saturation') {
     if(todoItem.value <= 50) {
-      codes.push(todoItem.accessory.context.color_white_code)
+      codes.push(todoItem.accessory.context.color_white_code);
     }
-  }
-  else if (todoItem.characteristic === 'brightness') {
+  } else if (todoItem.characteristic === 'brightness') {
     const steps =  todoItem.accessory.context.brightness_steps;
-    const step = (100 / steps);
+    const step = 100 / steps;
     const repeat = Math.floor(todoItem.value / step);
 
     for(let i = 0; i < steps; i++) {
-      codes.push(todoItem.accessory.context.brightness_down_code)
+      codes.push(todoItem.accessory.context.brightness_down_code);
     }
 
     for(let i = 0; i < repeat; i++) {
-      codes.push(todoItem.accessory.context.brightness_up_code)
+      codes.push(todoItem.accessory.context.brightness_up_code);
     }
   }
 
   return {
     codes,
-    state,
+    state
   };
-}
+};
 
 export = (api: API): void => {
   hap = api.hap;
