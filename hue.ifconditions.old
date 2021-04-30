@@ -1,0 +1,185 @@
+
+    // if (todoItem.value <= 30) {
+    //   return {
+    //     code: todoItem.accessory.context.color_red_code,
+    //     state: {}
+    //   }
+    // }
+    // else if (todoItem.value <= 60) {
+    //   return {
+    //     code: todoItem.accessory.context.color_orange_code,
+    //     state: {}
+    //   }
+    // }
+    // else if (todoItem.value <= 90) {
+    //   return {
+    //     code: todoItem.accessory.context.color_amber_code,
+    //     state: {}
+    //   }
+    // }
+    // else if (todoItem.value <= 120) {
+    //   return {
+    //     code: todoItem.accessory.context.color_yellow_code,
+    //     state: {}
+    //   }
+    // }
+    // else if (todoItem.value <= 150) {
+    //   return {
+    //     code: todoItem.accessory.context.color_chartreuse_code,
+    //     state: {}
+    //   }
+    // }
+    // else if (todoItem.value <= 180) {
+    //   return {
+    //     code: todoItem.accessory.context.color_green_code,
+    //     state: {}
+    //   }
+    // }
+    // else if (todoItem.value <= 210) {
+    //   return {
+    //     code: todoItem.accessory.context.color_teal_code,
+    //     state: {}
+    //   }
+    // }
+    // else if (todoItem.value <= 240) {
+    //   return {
+    //     code: todoItem.accessory.context.color_light_blue_code,
+    //     state: {}
+    //   }
+    // }
+    // else if (todoItem.value <= 270) {
+    //   return {
+    //     code: todoItem.accessory.context.color_blue_code,
+    //     state: {}
+    //   }
+    // }
+    // else if (todoItem.value <= 300) {
+    //   return {
+    //     code: todoItem.accessory.context.color_violet_code,
+    //     state: {}
+    //   }
+    // }
+    // else if (todoItem.value <= 330) {
+    //   return {
+    //     code: todoItem.accessory.context.color_purple_code,
+    //     state: {}
+    //   }
+    // }
+    // return {
+    //   code: todoItem.accessory.context.color_magenta_code,
+    //   state: {},
+    // }
+
+    "color_red_code": {
+        "title": "Color Red Code",
+        "type": "integer",
+        "required": true,
+        "placeholder": 8241413,
+        "description": "RF code to set color red."
+    },
+    "color_green_code": {
+        "title": "Color Green Code",
+        "type": "integer",
+        "required": true,
+        "placeholder": 8241414,
+        "description": "RF code to set color green."
+    },
+    "color_blue_code": {
+        "title": "Color Blue Code",
+        "type": "integer",
+        "required": true,
+        "placeholder": 8241415,
+        "description": "RF code to set color blue."
+    },
+    "color_orange_code": {
+        "title": "Color Orange Code",
+        "type": "integer",
+        "required": true,
+        "placeholder": 8241417,
+        "description": "RF code to set color orange."
+    },
+    "color_chartreuse_code": {
+        "title": "Color Chartreuse Code",
+        "type": "integer",
+        "required": true,
+        "placeholder": 8241418,
+        "description": "RF code to set color chartreuse."
+    },
+    "color_violet_code": {
+        "title": "Color Violet Code",
+        "type": "integer",
+        "required": true,
+        "placeholder": 82414219,
+        "description": "RF code to set color violet."
+    },
+    "color_amber_code": {
+        "title": "Color Amber Code",
+        "type": "integer",
+        "required": true,
+        "placeholder": 8241421,
+        "description": "RF code to set color amber."
+    },
+    "color_teal_code": {
+        "title": "Color Teal Code",
+        "type": "integer",
+        "required": true,
+        "placeholder": 8241422,
+        "description": "RF code to set color teal."
+    },
+    "color_magenta_code": {
+        "title": "Color Magenta Code",
+        "type": "integer",
+        "required": true,
+        "placeholder": 8241423,
+        "description": "RF code to set color magenta."
+    },
+    "color_yellow_code": {
+        "title": "Color Yellow Code",
+        "type": "integer",
+        "required": true,
+        "placeholder": 8241425,
+        "description": "RF code to set color yellow."
+    },
+    "color_light_blue_code": {
+        "title": "Color Light-Blue Code",
+        "type": "integer",
+        "required": true,
+        "placeholder": 8241426,
+        "description": "RF code to set color light-blue."
+    },
+    "color_purple_code": {
+        "title": "Color Purple Code",
+        "type": "integer",
+        "required": true,
+        "placeholder": 8241427,
+        "description": "RF code to set color purple."
+    },
+
+    "color_white_red_code": {
+        "title": "Color White/Red Code",
+        "type": "integer",
+        "required": true,
+        "placeholder": 8241433,
+        "description": "RF code to set color white/red."
+    },
+    "color_white_green_code": {
+        "title": "Color White/Green Code",
+        "type": "integer",
+        "required": true,
+        "placeholder": 8241434,
+        "description": "RF code to set color white/green."
+    },
+    "color_white_purple_code": {
+        "title": "Color White/Green Code",
+        "type": "integer",
+        "required": true,
+        "placeholder": 8241435,
+        "description": "RF code to set color white/green."
+    },
+    "color_white_yellow_code": {
+        "title": "Color White/Green Code",
+        "type": "integer",
+        "required": true,
+        "placeholder": 8241436,
+        "description": "RF code to set color white/yellow."
+    },
